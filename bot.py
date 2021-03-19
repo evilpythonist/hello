@@ -10,4 +10,4 @@ class CustomClient(discord.Client):
         if message.author == self.user:
             pass
 client = CustomClient()
-client.run("ODIyNDU3NTAyNzM3ODkxMzI5.YFSjPQ.sooMBr1YZGg3mbaFKw98vCiJl3A")
+client.run(TOKEN)
