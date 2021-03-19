@@ -13,7 +13,7 @@ class CustomClient(discord.Client):
         else:
             match = re.search("(?<=\$wiki ).+",message.content)
             if match:
-                await message.channel.send("https://pl.wikipedia.org/wiki/"+match.group(0))
+                await message.channel.send("https://pl.wikipedia.org/wiki/"+match.group(0).rstrip().lstrip())
                 
 client = CustomClient()
 client.run(TOKEN)
