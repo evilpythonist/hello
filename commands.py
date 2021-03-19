@@ -21,17 +21,15 @@ async def mute(message:Message):
     overwrite.read_messages = True
     await message.channel.set_permissions(message.author,overwrite=overwrite)
     
-async def give_permission(user,message:Message):
+async def give_permission(client,id,message):
     overwrite = discord.PermissionOverwrite()
     overwrite.send_messages = True
     overwrite.read_messages = True
-    await message.channel.set_permissions(user,overwrite=overwrite)
+    await message.channel.set_permissions(get(client.guilds[0].members, id=int(id[0])),overwrite=overwrite)
     
-async def give_permission(client,id):
-    print(client.guilds[0].members)
-    member =  get(client.guilds[0].members, id=int(id[0]))
 async def kick(client,id):
     member = get(client.guilds[0].members, id=int(id[0]))
     member.kick()
+    
 async def invite(client:Client,message:Message):
     await message.channel.send("https://discord.gg/r8w7XAgH2E")
