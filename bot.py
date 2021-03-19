@@ -1,6 +1,5 @@
 import re
 import discord
-
 class CustomClient(discord.Client):
     async def on_ready(self):
         print(f'{self.user} connected')
@@ -11,9 +10,12 @@ class CustomClient(discord.Client):
         if message.author == self.user:
             pass
         else:
-            match = re.search("(?<=\$wiki ).+",message.content)
-            if match:
-                await message.channel.send("https://pl.wikipedia.org/wiki/"+match.group(0).rstrip().lstrip())
+            match = re.search("(?=\$\w+ ?).*",message.content)
+            command,*args = re.sub(" +"," ",match.group(0)).split(" ")
+            if command == "$wiki":
+                await wiki(message,args)
+            elif command == "$now":
+                await now(message)
                 
 client = CustomClient()
 client.run(TOKEN)
