@@ -1,3 +1,4 @@
+import re
 import discord
 
 class CustomClient(discord.Client):
@@ -9,5 +10,10 @@ class CustomClient(discord.Client):
     async def on_message(self,message:discord.Message):
         if message.author == self.user:
             pass
+        else:
+            match = re.search("(?<=\$wiki ).+",message.content)
+            if match:
+                await message.channel.send("https://pl.wikipedia.org/wiki/"+match.group(0))
+                
 client = CustomClient()
 client.run(TOKEN)
