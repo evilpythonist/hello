@@ -31,5 +31,9 @@ async def kick(client,id):
     member = get(client.guilds[0].members, id=int(id[0]))
     member.kick()
     
+async def get_id(client:Client,message:Message):
+   for member in message.mentions:
+       await message.channel.send(member.name +" : "+str(member.id))
+    
 async def invite(client:Client,message:Message):
     await message.channel.send("https://discord.gg/r8w7XAgH2E")
