@@ -30,6 +30,9 @@ class CustomClient(discord.Client):
                     await kick(self, args)
                 elif command == "$invite":
                     await invite(self,message)
+                elif command == "$get_id":
+                    await get_id(self,message)
+
 
 intents = discord.Intents(messages=True, guilds=True,members=True)
 client = CustomClient(intents=intents)
