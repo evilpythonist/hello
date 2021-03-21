@@ -37,3 +37,13 @@ async def get_id(client:Client,message:Message):
     
 async def invite(client:Client,message:Message):
     await message.channel.send("https://discord.gg/r8w7XAgH2E")
+    
+async def new_channel(client:Client,args):
+    await client.guilds[0].create_text_channel(args[0])
+    
+async def delete_channel(client:Client,args):
+    ch= discord.utils.get(client.guilds[0].channels, name=args[0])
+    await ch.delete()
+    
+async def new_voice_channel(client:Client,args):
+    await client.guilds[0].create_voice_channel(args[0])
