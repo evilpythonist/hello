@@ -32,6 +32,14 @@ class CustomClient(discord.Client):
                     await invite(self,message)
                 elif command == "$get_id":
                     await get_id(self,message)
+                elif command == "$random":
+                    await rand(message,args)
+                elif command == "$new_ch":
+                    await new_channel(self,args)
+                elif command == "$del_ch":
+                    await delete_channel(self,args)
+                elif command == "$new_v_ch":
+                    await new_voice_channel(self,args)
 
 
 intents = discord.Intents(messages=True, guilds=True,members=True)
